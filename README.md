@@ -169,7 +169,7 @@ Una de nuestras conclusiones es que la gente está más acostumbrada a la distri
 ![mockupWeb](https://github.com/PatriciaVidal/lim-2018-05-bc-core-pm-socialnetwork/blob/master/image/mockup%20web%20es.png)
 
  
- 
+  
 ### Pruebas / tests
 
 *  Tests unitarios cubren un mínimo del 70% de statements, functions, lines y branches.
