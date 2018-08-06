@@ -1,3 +1,5 @@
+@import url("../tipografia/fonts.css");
+
 html{
   position: absolute;
   width: 100%;
@@ -11,6 +13,8 @@ body{
   width: 100%;
   padding: 0px;
   margin: 0px;
+  font-family: MyriadPro;
+  font-style: italic;
 }
 
 #logo{
@@ -22,7 +26,6 @@ header{
   background-color: #A05BA6;
   height: 40px;
   position: relative;  
-  
 }
 
 nav{
@@ -32,18 +35,26 @@ nav{
 ul {
   list-style: none;
 }
-  
+
 nav li a{
   background-color: #A05BA6;
   color: white;
   text-decoration: none;
   padding: 5px 25px;
   display: block;
-  float: left;
-  
+  float: left;  
 }
-  
-nav li a:hover{
+
+#logout{
+  float: right;
+  padding: 6.5px;
+}
+
+.menu-logout{
+  width: 23px;
+}
+
+nav li a:hover, .menu-logout:hover{
   background-color: #824787;
 }
 
@@ -79,7 +90,7 @@ nav li a:hover{
 .right{
   width: 25%;
 }
-.menu-home, .menu-search, .menu-friend, .menu-perfil{
+.menu-home, .menu-search, .menu-friend, .menu-perfil, .menu-logout{
   width: 25px;  
 }
 

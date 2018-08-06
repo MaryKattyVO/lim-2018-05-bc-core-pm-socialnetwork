@@ -6,122 +6,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
     <title>Index</title>
 </head>
 
 <body>
-    <!-- Autenticación -->
-    <div id="content" class="content">
-
-        <div id="login" class="login">
-
-            <div id="presentación-login" class="presentación-login">
-                <br>
-                <br>
-                <br>
-                <br>
-                <img src="../image/LogoHb-transparencia.png" width=350px>
-                <p>Únete y <b>comparte</b> en el fascinante<br>
-                    mundo de la <b>paternidad.</b>
+    <div class="content">
+        <div class="content-presentation">
+            <div class="presentation">
+                <img src="../image/LogoHb-transparencia.png">
+                <p id="presentation-text" class="presentation-text">Únete y
+                    <b>comparte</b> en el fascinante
+                    <br> mundo de la
+                    <b>paternidad.</b>
                 </p>
             </div>
-
-            <div class="content-login" class="hiden">
-                <!-- Sección Login -->
-                <div id="section-login" class="hiden">
+        </div>
+        <div class="content-login-register">
+            <div id="login" class="login">
+                <div id="logo" class="hiden">
+                    <img src="../image/LogoHb-transparencia.png">
+                </div>
+                <br>
+                <div>
+                    <p class="account-question">¿Ya tienes una cuenta?</p>
+                    <input type="email" id="email" class="input-email" placeholder="Correo electrónico" required><br>
+                    <span class="innerText" id="emailOK"></span><br>
+                    <input type="password" id="password" class="input-password" placeholder="Contraseña" required><br>
+                    <span class="innerText2" id="passwordOK"></span>        
                     <br>
                     <br>
-                    <div>
-                        <p>¿Ya tienes una cuenta?</p>
-                        <input type="email" id="email" class="input-email" placeholder="Correo electrónico" required>
-                        <span class= "innerText" id="emailOK"></span>
-                        <input type="password" id="password" class="input-password" placeholder="Contraseña" required>
-                        <span class= "innerText2" id="passwordOK"></span>
+                    <input type="button" id="btnLogin" class="button-login" value="INGRESAR">
+                    <br>
+                    <br> Ingresar con :
+                    <br>
+                    <div class="button-google-facebook">
+                        <input type="button" id="btnGoogle" value="" class="login-google">
+                        <input type="button" id="btnFacebook" value="" class="login-facebook">
                         <br>
-                        <br>
-                        <input type="button" id="btnLogin" class="button-login" value="Ingresar">
-                        <br>
-                        <br> Ingresar con :
-                        <br>
-                        <br>
-                        <div id="botoncitos">
-                          <input type="button" id="btnGoogle" value="" class="login-google">
-                          <input type="button" id="btnFacebook" value="" class="login-facebook">
-                        <br> 
-                        <br>
-                        </div>
-                        <br>
-                        <input type="button" id="btnRegister1" class="button-registrarse" value="Quiero registrarme">
                     </div>
+                    <br>
+                    <input type="button" id="btnRegister" class="button-registrarse" value="QUIERO REGISTRARME">
                 </div>
             </div>
-
-        </div>
-
-        <div id="register" class="">
-            <!-- Sección Registro -->
-            <div id="presentación-register" class="">
-                <br><br><br>
-                <img src="../image/LogoHb-transparencia.png" width=350px>
-                <p>Únete y <b>comparte</b> en el fascinante<br>
-                    mundo de la <b>paternidad.</b>
-                </p>
-            </div>
-
-            <div id="content-register" class="">
-
-                <div id="section-register" class="">
+            <div id="register" class="register">
+                <div id="logo" class="hiden">
+                    <img src="../image/LogoHb-transparencia.png">
+                </div>
+                <br>
+                <div>
+                    <input type="text" id="name-register" class="input-name" placeholder="Nombre">
+                    <input type="text" id="lastname-register" class="input-lastname" placeholder="Apellidos">
+                    <input type="email" id="email-register" class="input-email-register" placeholder="Correo electrónico"><br>
+                    <span id="emailOK2"></span>
+                    <input type="password" id="password-register1" class="input-password-register1" placeholder="Contraseña"><br>
+                    <span class="innerText2" id="passwordOK2"></span> 
+                    <input type="password" id="password-register2" class="input-password-register2" placeholder="Repetir contraseña">
+                    <br>
+                    <input type="checkbox" id="register-terminos" class="checkbox-condiciones">
+                    <label for="register-terminos">Acepto los términos y condiciones</label>
+                    <span class="innerText3" id="checkboxOK"></span> 
                     <br>
                     <br>
-                    <div>
-                        <input type="text" id="name-register" class="input-name" placeholder="Nombre">
-                        <input type="text" id="lastname-register" class="input-lastname" placeholder="Apellidos">
-                        <input type="email" id="email-register" class="input-email-register" placeholder="Correo electrónico">
-                        <span class= "innerText" id="email-registerOk"></span>
-                        <input type="password" id="password-register1" class="input-password-register1" placeholder="Contraseña">
-                        <span class= "innerText" id="password-register1Ok"></span>
-                        <input type="password" id="password-register2" class="input-password-register2" placeholder="Repetir contraseña">
-                        <br>
-                        <br>
-                        <input type="checkbox" id="register-terminos" class="checkbox-condiciones">
-                        <label for="register-terminos">Acepto los términos y condiciones</label>
-                        <br>
-                        <br>
-                        <input type="button" id="btnRegister2" class="button-registro" value="Registrarme">
-                        <!-- id=register-user -->
-                    </div>
+                    <input type="button" id="btn-register-user" class="button-register" value="REGISTRARME">
+                    <br><br>
+                    
                 </div>
             </div>
-
         </div>
 
-    </div>
-
-    <!--LogOut -->
-    <div id="logout" class="hiden">
-        <p id="username"></p>
-        <input type="button" name="" value="Logout" id="btnLogout">
-    </div>
-
-    <div id="section-post" class="hiden">
-        <!-- Base de datos -->
-        <div id="bd" class="hiden">
-            bd
-            <textarea name="publicacion" id="post" cols="30" rows="10"></textarea>
-            <input type="button" id="btnSave" value="publicar">
+        <!--LogOut -->
+        <div id="logout" class="hiden">
+            <p id="username"></p>
+            <input type="button" name="" value="Logout" id="btnLogout">
         </div>
 
-        <!-- Posts -->
-        <div id="posts" class="hiden">
-            <h3>Posts</h3>
-        </div>
-    </div>
+        <div id="section-post" class="hiden">
+            <!-- Base de datos -->
+            <div id="bd" class="hiden">
+                bd
+                <textarea name="publicacion" id="post" cols="30" rows="10"></textarea>
+                <input type="button" id="btnSave" value="publicar">
+            </div>
 
-    <!-- Inicializa Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-    <script src="config.js"></script>
-    <script src="app.js"></script>
+            <!-- Posts -->
+            <div id="posts" class="hiden">
+                <h3>Posts</h3>
+            </div>
+        </div>
+
+        <!-- Inicializa Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+        <script src="config.js"></script>
+        <script src="index.js"></script>
+        <script src="app.js"></script>
 </body>
 
 </html>

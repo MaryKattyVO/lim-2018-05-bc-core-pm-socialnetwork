@@ -6,8 +6,6 @@ html{
   height: 100%;
   margin: 0px;
   padding: 0px;
-  font-family: MyriadPro;
- /*  background-color: chartreuse; */
 }
 
 body{
@@ -15,6 +13,7 @@ body{
   padding: 0px;
   margin: 0px;
   font-family: MyriadPro;
+  font-style: italic;
 }
 
 #logo{
@@ -26,6 +25,12 @@ header{
   background-color: #A05BA6;
   height: 40px;
   position: relative;    
+}
+
+textarea{
+  font-family: MyriadPro;
+  font-style: italic;
+  font-size: 15px;
 }
 
 nav{
@@ -43,11 +48,16 @@ nav li a{
   padding: 5px 25px;
   display: block;
   float: left;
-  
 }
-  
-nav li a:hover{
+
+#logout{
+  float: right;
+  padding: 6.5px;
+}
+
+nav li a:hover, .menu-logout:hover{
   background-color: #824787;
+ /*  border-bottom: 5px solid #824787; */
 }
 
 .content{
@@ -85,12 +95,6 @@ nav li a:hover{
   
 }
 
-.menu-logout::before{
-  content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMaSURBVGhD7ZrPi41RHMbvmGkGJdkwNBE1KSFqSkmzkmSl1MzYWXAXUpOGlOykNGWhsbKS5g+gZKFQZqFQIrHARhYWiCE0xr0+555nZOa+97rvO/ec99xxPvV03nvP93ue59ud7s8pRCKRSCQjpVKpq1wur0CLddfCQcPtZx1DD9Ekt/+g249YL7Gaui61thYEX8UA51k/mMEaxdSjUdOvo8KGzO2EPY6+2BGyYfrRCJftOjo8CLgS3bGRm4PO65ZFOBBsPXppYzYXzn3NskFW+UOgNa6GnYHz36AeWeYHWToJct/Gcgs+D1g6ZZ0PhDhr42SHM96jF+ij7qoJNedk7R/Me9EPZUkNveZ1uZ/LNnMeq3mG34OeVwoSYG8KbawE8A3+V2yM9BD6NkviOy32lqHHtrIa9sZV6g9MzUvQT2VIBX3mr2KtjkqEmq2oZDtmY3zRapX6AcNh+aeG3hs6pi7UmSepRNgbUZkfMLwp79TQe0HH1IW6q2qpgr1bKvMDhp/lnRp6L+uYulB3TS1VsPeVZZFK3YJZj7XNBv2vWOqGpaYL1f3gwf46lbsFoz55ZoYzjui4RNg/rdKaULNT5W7Ba5e1zA5hv6MBHTkLtovsTdvK2lCzVy1uwWi7POcNZ91Fw2gAnUA1n5nnQm2/IrkFr25rmS8MvEWR3IKXeQs4ZW3zAf9fLEsVyT0YTljrfMD/maL4AcMz8s4F/C8qih8wHJJ3LuDv5yXJgNkOPD9Za//g/5Sl8pHSOXkPayDDoOK4JZBh77G4f3QDGXYS9SqSOwIZdhodUCR3BDKs+eajqEjuCGTYb+igIrkjkGGfoM2K5I68h8X/LTrGZYciuaPZw3LeuPROdyXCvvm18DoaQn5+I8ao2cOOscx8yd7G7U1oH9eHWE+io2iQ29uQ+0fzbzB2NmxwZB2WPvN70KkEHWZ7YQ1roLehL9SDgcBLyJ35z7jlBibzchs9G3Hg0CFzHDgJBjP/v1GcK+7380V4syB0owNPqKW1YZY4cBJx4FaFWf67gTvQ7n+JgfvUEolEIpHIvCkUfgNCNoal9lQUGQAAAABJRU5ErkJggg==);
-  right: 15px;
-
-  top:20px;            
-}
 
 .right{
   width: 25%;

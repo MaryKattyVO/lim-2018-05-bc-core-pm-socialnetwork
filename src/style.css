@@ -1,217 +1,210 @@
 @import url("../tipografia/fonts.css");
-
-body{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  font-family: MyriadPro;
-  font-weight: 500;
+html{
+    height: 100%;
 }
 
-.content{
-  width: 100%;
-  height: 100%;
+body{
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    margin: 0;
+    font-family: MyriadPro;
+    font-weight: 500;
+}
+
+.content{ 
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.content-presentation{
+    width: 50%;
+    height: 100%;
+    background-color: #EFEEE9;
+    text-align: center;
+}
+
+.presentation{
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content-login-register{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    background-color: #EFEEE9;
+    text-align: center;
+}
+
+.login, .register{
+    width: 400px;
+    height: calc(100% - 3px);
+    background-color:white;
+    padding: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.presentation-text{
+    color: #A05BA6;
+    font-family: "MyriadPro";
+    font-style: italic;
+    font-size: 25px;
 }
 
 .login{
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ccc;
+    z-index: 9;
 }
 
-#btnLogin, #btnRegister2{
-  border-radius: 10px;
+.register{
+    z-index: 6;
+}
+
+.button-google-facebook{
+    text-align: center;
+}
+
+img{
+  width: 350px;
   padding: 10px;
-  font-weight: 200;
-  font-size: 15px;
-  cursor: pointer; 
-  text-align: center;
-  height: 40px;
-  background-color:#83c669;
-  color: white;
-  cursor: pointer;
 }
 
-.presentación-login{
-  width: 60%;  
-  background-color: #EFEEE9;
-  height: 100%;
-  text-align: center;
-}
-
-.content-login{
-  width: 40%;
-  background-color: #FFFFFF;
-  height: 100%;
-}
-
-#register{
-  height: 100%;
-  display: flex;
-}
-
-#btnRegister1{
-  border-radius: 10px;
-  padding: 10px;
-  font-weight: 200;
-  font-size: 15px;
-  cursor: pointer; 
-  text-align: center;
-  height: 40px;
-  border-color:#83c669;
-  background-color: white;
-  color: #537f42;
-  cursor: pointer;
-}
-
-#presentación-register{
-  background-color: #EFEEE9;
-  width: 60%;
-  height: 100%;
-  text-align: center;
-}
-
-#content-register{
-  background-color: #FFFFFF;
-  width: 40%;
-  height: 100%;
-}
-
-
-#section-login, #section-register{
-  width: 300px;
-  height: 550px;
-  border-radius: 10px;
-  background-color:white;
-  padding: 25px; 
-  margin: 20px 30px 30px 100px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);  
-}
-
-#botoncitos{
-  text-align: center;
+.account-question{
+    text-align: left;
+    padding-left: 40px;
 }
 
 .login-google{
-  width:60px;
-  height:60px;
-  background-image: url("../image/boton_google.png");
-  background-size: 60px;
-  background-repeat:no-repeat;
-  margin: 0px;
-  padding:0px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
-  cursor: pointer;
-  opacity: 0.80;
+    width:60px;
+    height:60px;
+    background-image: url("../image/boton_google.png");
+    background-size: 60px;
+    background-repeat:no-repeat;
+    margin: 0px;
+    padding:0px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    opacity: 0.80;
 }
-
-.button-google:hover{
-  opacity: 1;
-  -moz-opacity: .50;
-  filter:alpha (opacity=50);
+  
+.login-google:hover{
+    opacity: 1;
+    -moz-opacity: .50;
+    filter:alpha (opacity=50);
 }
-
+  
 .login-facebook{
-  width:60px;
-  height:60px;
-  background-image: url("../image/boton-facebook.jpg");
-  background-size: 60px;
-  background-repeat:no-repeat;
-  margin: 0px;
-  padding:0px;
-  -moz-border-radius: 50px;
-  border-radius: 50px;
-  cursor: pointer;
-  opacity: 0.80;
+    width:60px;
+    height:60px;
+    background-image: url("../image/fb.png");
+    background-size: 60px;
+    background-repeat:no-repeat;
+    margin: 0px;
+    padding:0px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+    opacity: 0.80;
+}
+  
+.login-facebook:hover{
+    opacity: 1;
+    -moz-opacity: .50;
+    filter:alpha (opacity=50);
 }
 
-.button-facebook:hover{
-  opacity: 1;
-  -moz-opacity: .50;
-  filter:alpha (opacity=50);
+.button-login, .button-registrarse, .button-register{
+    border-radius: 15px;
+    height: 50px;
+    width: 80%;
+    margin: 5px;
+    outline: none;
 }
 
-#section-login:hover, #section-register:hover{
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+.button-login:hover, .button-registrarse:hover, .button-register:hover{
+    box-shadow: 0 7px 18px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.12);
 }
 
-.hiden {
-  display: none;
+.button-login, .button-register{
+    background-color: #83BE52;
+    color: #FFFFFF;
 }
 
-.show {
-  display: block;
+.button-registrarse{
+    border-color: #83BE52;
+    background-color: #FFFFFF;
+    color: #83BE52;
 }
 
-input{
-  border-radius: 5px;
-  height: 25px;
-  width: 95%;
-  margin: 5px;
-}
-
-
-#presentación-login, #presentación-register{
-  color: #A05BA6;
-  font-family: "MyriadPro";
-  font-style: italic;
-  font-size: 25px;
+input[type="email"], input[type="password"], input[type="text"]{
+    border: 0;
+    border-radius: 15px;
+    width: 78%;
+    margin: 10px;
+    padding-left: 5px;
+    outline: none;
+    height: 50px;
+    background-color: #EFEEE9;
 }
 
 .checkbox-condiciones{
-  size:3px;
+    size:3px;
 }
 
-/*Validación correo*/
-.innerText{
-color: red;
-font-size: red;
+.hiden {
+    display: none
+}
+  
+.show {
+    display: block;
 }
 
-/*Validación contraseña*/
-.innerText2{
-  color: red;
+/*Validación correo y contraseña */
+span{
+  color: #e52727;
   font-size: 15px;
-  }
+}
 
 /* Galaxy S3, S4, S5: 360 x 640  */
 @media only screen and (max-width: 360px) {
 
-  .presentación-login{
-    display: none;
-  }
+    .content-presentation{
+        display: none;
+    }
+
+    .content-login-register{
+        width: 100%;
+        height: 100%;
+    }
+
+    img{
+        width: 250px;
+        padding: 15px;
+    }
+
+    #logo{
+        display: block;
+    }
+
+    .login, .register{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .button-login, .button-registrarse, .button-register{
+        height: 35px;
+        margin: 2px;
+    }
+   
+    input[type="email"], input[type="password"], input[type="text"]{
+        height: 35px;
+    }
     
-  .content-login, content-register{
-    width: 100%;
-    height: 100%;
-  }
-
-  #presentación-register{
-    display: none;
-  }
-
-  input{
-    border-radius: 5px;
-    height: 25px;
-    width: 85%;
-    margin: 5px;
-  }
-
-  
-
-}
-/* Galaxy Tab 2 y 3 (7.0 pulgadas): 600 x 1024  */
-@media only screen and (max-width:600px){
-
-
-}
-/* Pantallas medianas: 1280 x 720 / 1280 x 800  */
-@media only screen and (max-width:1280px){
-
-
 }

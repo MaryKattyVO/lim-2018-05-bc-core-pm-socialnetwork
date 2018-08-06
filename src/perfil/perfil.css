@@ -6,8 +6,11 @@ html{
   height: 100%;
   margin: 0px;
   padding: 0px;
+<<<<<<< HEAD
   font-family: 'MyriadPro';
  /*  background-color: chartreuse; */
+=======
+>>>>>>> 8a4641b3fec7cbc3938b7e5d0a6f21bbb6d9eb34
 }
 
 body{
@@ -15,7 +18,17 @@ body{
   padding: 0px;
   margin: 0px;
   font-family: MyriadPro;
+<<<<<<< HEAD
   font-weight: 500;
+=======
+  font-style: italic;
+}
+
+textarea{
+  font-family: MyriadPro;
+  font-style: italic;
+  font-size: 15px;
+>>>>>>> 8a4641b3fec7cbc3938b7e5d0a6f21bbb6d9eb34
 }
 
 #logo{
@@ -48,8 +61,17 @@ nav li a{
   float: left;
   font-family: MyriadPro;
 }
-  
-nav li a:hover{
+
+#logout{
+  float: right;
+  padding: 6.5px;
+}
+
+.menu-logout{
+  width: 23px;
+}
+
+nav li a:hover, .menu-logout:hover{
   background-color: #824787;
 }
 

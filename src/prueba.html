@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text" id="letra">
+    <p id="msg" style="color: red;"></p>
+    <input type="button" id="validate">
+
+    <script>
+        const a = document.getElementById('letra');
+        const msg = document.getElementById('msg');
+        const c = document.getElementById('validate');
+
+
+
+        const validateName = (x) => {
+            const z = /[a-z]/;
+
+            if (z.test(x)) {
+               msg.innerHTML = "correo correcto";
+               msg.classList.add('red');
+            } else {
+                msg.innerHTML = "correo incorrecto";
+            }
+        }
+
+        c.addEventListener('click', () => {
+            validateName(a.value);
+        })
+
+    </script>
+    
+</body>
+
+</html>

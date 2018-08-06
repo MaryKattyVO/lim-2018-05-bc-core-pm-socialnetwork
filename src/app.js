@@ -1,147 +1,15 @@
-const login = document.getElementById('login');
-const sectionLogin = document.getElementById('section-login');
+const userNameProfile = document.getElementById('user-name-profile');
+const userNamePost = document.getElementById('user-name-post');
 const logout = document.getElementById('logout');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const btnRegister1 = document.getElementById('btnRegister1');
-const btnRegister2 = document.getElementById('btnRegister2');
-const btnLogin = document.getElementById('btnLogin');
-const btnLogout = document.getElementById('btnLogout');
-const btnFacebook = document.getElementById('btnFacebook');
-const btnGoogle = document.getElementById('btnGoogle');
-const register = document.getElementById('register');
-const sectionRegister = document.getElementById('section-register');
-const nameRegister = document.getElementById('name-register');
-const lastName = document.getElementById('lastname-register');
-const emailRegister = document.getElementById('email-register');
-const passwordRegister1 = document.getElementById('password-register1');
-const passwordRegister2 = document.getElementById('password-register2');
-const registerTerminos = document.getElementById('register-terminos');
-const btnRegister2 = document.getElementById('btnRegister2');
-const bd = document.getElementById('bd');
 const btnSave = document.getElementById('btnSave');
-const post = document.getElementById('post');
-const posts = document.getElementById('posts');
+const bd = document.getElementById("bd");
+const post = document.getElementById("post");
+const posts  = document.getElementById("posts");
 
-// Verificar si tenemos nuestro usuario logueado
-window.onload = () => {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      console.log('Usuario Logueado');
-      login.classList.add("hiden");
-      logout.classList.remove("hiden");
-      username.innerHTML = `Bienvenid@ ${user.displayName}`;
-      console.log(user.uid);
-    } else {
-      console.log('Sin usuario');
-      sectionLogin.classList.remove("hiden");
-      logout.classList.add("hiden");
-    }
-  });
+
+goToLogin = () => {
+  window.location.assign("../index.html");
 }
-
-btnRegister1.addEventListener('click', () => {
-  login.classList.add("hiden");
-  register.classList.remove("hiden");
-})
-
-// Evento que registra a un nuevo usuario
-btnRegister2.addEventListener('click', () => {
-
-
-  firebase.auth().createUserWithEmailAndPassword(emailRegister.value, passwordRegister1.value)
-    .then(() => {
-      var user = firebase.auth().currentUser; //accede al usuario que se registro
-
-      console.log(user);
-      //logout.classList.remove("hiden");
-      //console.log(data);
-      register.classList.add("hiden");
-
-    })
-    .catch(function (error) {
-      console.log(error.code, ' : ', error.message);
-    });
-
-
-})
-
-// Evento que permite entrar a la red social usando correo y contraseña
-btnLogin.addEventListener('click', () => {
-  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-    .then(() => {
-      console.log('Verificado')
-      //sectionLogin.classList.add("hiden");
-      // logout.classList.remove("hiden");
-      window.location.assign("../home/home.html");
-    })
-    .catch(function (error) {
-      console.log('Contraseña Incorrecta')
-    });
-})
-
-// evento que permite cerrar sesion
-btnLogout.addEventListener('click', () => {
-  firebase.auth().signOut().then(function () {
-    console.log('Cerró Sesión');
-    login.classList.remove("hiden");
-    logout.classList.add("hiden");
-  }).catch(function (error) {
-    console.log('Error al cerrar Sesión');
-  });
-})
-
-// evento que permite iniciar sesion con una cuenta de Facebook
-btnFacebook.addEventListener('click', () => {
-  login.classList.add("hiden");
-  logout.classList.remove("hiden");
-
-  var provider = new firebase.auth.FacebookAuthProvider();
-  provider.setCustomParameters({
-    'display': 'popup'
-  });
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) {
-      console.log('Logueado con Fb')
-      window.location.assign("../home/home.html");
-    })
-    .catch(function (error) {
-      console.log(error.code);
-      console.log(error.message);
-      console.log(error.email);
-      console.log(error.credential);
-    });
-  username.innerHTML = "";
-  email.innerHTML = "";
-})
-
-// evento que permite iniciar sesion con una cuenta de google
-btnGoogle.addEventListener('click', () => {
-  login.classList.add("hiden");
-  logout.classList.remove("hiden");
-
-  var provider = new firebase.auth.GoogleAuthProvider();
-
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) {
-      console.log('Login Google');
-      window.location.assign("../home/home.html");
-    })
-    .catch(function (error) {
-      console.log(error.code);
-      console.log(error.message);
-      console.log(error.email);
-      console.log(error.credential);
-    });
-
-});
-
-
-
-
-
-
 
 
 function writeUserData(userId, name, email, imageUrl) {
@@ -179,15 +47,31 @@ btnSave.addEventListener('click', () => {
   var userId = firebase.auth().currentUser.uid;
   const newPost = writeNewPost(userId, post.value);
 
+  const nameUsers = document.createElement('p');
+  nameUsers.setAttribute('id','user-name-post');
+
+  const photoUser = document.createElement('img');
+  photoUser.setAttribute('src','../../image/user.jpg');
+
   var btnUpdate = document.createElement("input");
-  btnUpdate.setAttribute("value", "Update");
+  btnUpdate.setAttribute("value", "Editar");
   btnUpdate.setAttribute("type", "button");
+
   var btnDelete = document.createElement("input");
-  btnDelete.setAttribute("value", "Delete");
+  btnDelete.setAttribute("value", "Eliminar");
   btnDelete.setAttribute("type", "button");
+
+  const btnLike = document.createElement('input');
+  btnLike.setAttribute("value", "Me gusta");
+  btnLike.setAttribute("type", "button");
+
   var contPost = document.createElement('div');
-  var textPost = document.createElement('textarea')
+  contPost.setAttribute('class','friend-post');
+
+  var textPost = document.createElement('textarea');
+  textPost.setAttribute('class','textarea-post');
   textPost.setAttribute("id", newPost);
+
 
   textPost.innerHTML = post.value;
   //Boton eliminar
@@ -220,9 +104,12 @@ btnSave.addEventListener('click', () => {
 
   });
 
+  contPost.appendChild(nameUsers);
+  contPost.appendChild(photoUser);
   contPost.appendChild(textPost);
   contPost.appendChild(btnUpdate);
   contPost.appendChild(btnDelete);
+  contPost.appendChild(btnLike);
   posts.appendChild(contPost);
 })
 
@@ -241,42 +128,14 @@ document.getElementById('email').addEventListener('input', () => {
   } 
 });
 
-//Validación de contraseña
-document.getElementById('password').addEventListener('input', () => {
-  campo = event.target;
-  valido = document.getElementById('passwordOK');
-      
-  emailRegex = /(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,10})$/i;
 
-  if (emailRegex.test(campo.value)) {
-    valido.innerText = "Contraseña segura";
-  } else {
-    valido.innerText = "La contraseña que ingresaste es incorrecta. ";
-  } 
-});
-//validando registro usuario : correo:
-document.getElementById('email-register').addEventListener('input', () => {
-  campo = event.target;
-  valido = document.getElementById('email-registerOk');
-      
-  emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
-  if (emailRegex.test(campo.value)) {
-    valido.innerText = "válido";
-  } else {
-    valido.innerText = "Ingresa una dirección de correo electrónico válido";
-  } 
-});
-//Validadndo registro usuario : pasword
-document.getElementById('password-register1').addEventListener('input', () => {
-  campo = event.target;
-  valido = document.getElementById('password-register1Ok');
-      
-  emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
 
-  if (emailRegex.test(campo.value)) {
-    valido.innerText = "La ontraseña es segura";
-  } else {
-    valido.innerText = "La contraseña debe tener al menos 6 caracteres. Prueba con otra.";
-  } 
-});
+
+
+
+
+
+
+
+
