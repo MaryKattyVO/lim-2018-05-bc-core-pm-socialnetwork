@@ -1,0 +1,106 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>HB - Home</title>
+</head>
+
+<body>
+    <section class="home-general">
+        <!-- Encabezado -->
+        <img src="../image/logo.png">
+        <header>
+            
+            <p id="username"></p>
+            <nav class="menu">
+                <ul>
+                    <li>
+                        <a href="home.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="search.html">Search</a>
+                    </li>
+                    <li>
+                        <a href="friend.html">Friends</a>
+                    </li>
+                    <li>
+                        <a href="advertising.html">advertising</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <br>
+        <br>
+        <!-- Link de Home -->
+        <section id="home">
+            <div class="info-user">
+            </div>
+            <main>
+                <div class="card-new-post">
+                    <img src="../image/user.jpg">
+                    <textarea placeholder="Cuéntanos algo"></textarea>
+                    <input type="button">
+                    <select>
+                        <option value="public">Público</option>
+                        <option value="yo">Solo yo</option>
+                    </select>
+                    <input type="button" value="PUBLICAR">
+                </div>
+                <br>
+                <br>
+                <div class="friend-post">
+                    Name User
+                    <img src="../image/user.jpg">
+                    <textarea></textarea>
+                    <input type="button" value="like">
+                </div>
+            </main>
+            <div class="advertising">
+            </div>
+        </section>
+    </section>
+    <!-- Link de Search -->
+    <section id="search" class="hiden">
+        <div class="info-user">
+        </div>
+        <main>
+            <br>
+            <div class="friend-post">
+                Name User
+                <img src="../image/user.jpg">
+                <textarea></textarea>
+                <input type="button" value="like">
+            </div>
+        </main>
+        <div class="advertising">
+        </div>
+    </section>
+
+    <!-- Link de Friends -->
+    <section id="friend" class="hiden">
+        <div class="friend">
+            <p>Mis amigos</p>
+            <input type="button">
+        </div>
+        <div class="users">
+            <p>Más usuarios</p>
+            <input type="button">
+        </div>
+        <main>
+            <br>
+            <div class="friend-post">
+                Name User
+                <img src="../image/user.jpg">
+                <textarea></textarea>
+                <input type="button" value="like">
+            </div>
+        </main>
+        <div class="advertising">
+        </div>
+    </section>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>

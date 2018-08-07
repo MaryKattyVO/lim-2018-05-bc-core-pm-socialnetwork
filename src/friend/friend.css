@@ -1,4 +1,4 @@
-@import url("../tipografia/fonts.css");
+@import url("http://127.0.0.1:5500/tipografia/fonts.css");
 
 html{
   position: absolute;
@@ -47,7 +47,11 @@ nav li a{
 
 #logout{
   float: right;
-  padding: 6.5px;
+  padding: 10px 50px;
+  color: white;
+  font-family: MyriadPro;
+  font-style: oblique;
+  cursor: pointer;
 }
 
 .menu-logout{

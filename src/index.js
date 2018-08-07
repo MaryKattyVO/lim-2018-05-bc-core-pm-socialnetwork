@@ -155,14 +155,4 @@ document.getElementById('email').addEventListener('input',() => {
     }
   });
   
-  //Checkbox 
-  //if(document.getElementById("myCheck").checked === true){
-    const checkbox = document.getElementById('register-terminos');
-    checkbox.addEventListener("change", validaCheckbox, false);
-      valido = document.getElementById("checkboxOK");
-    function validaCheckbox(){
-      const checked = checkbox.checked;
-      if(checked){
-        valido.innerText ='checkbox está seleccionado'; 
-      }
-    }
+ 

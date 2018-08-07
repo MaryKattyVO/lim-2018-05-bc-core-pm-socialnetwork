@@ -2,6 +2,36 @@ const userNameProfile = document.getElementById('user-name-profile');
 const userNamePost = document.getElementById('user-name-post');
 const logout = document.getElementById('logout');
 const btnSave = document.getElementById('btnSave');
+
+const post = document.getElementById('post');
+const posts = document.getElementById('posts');
+
+//Verifica si usuario esta logeado o no.
+//Onload guarda informaciòn de la sesiòn iniciada lo cual permite
+//no volver a ingresar datos si no se ha cerrado sesion
+//Verifica si usuario esta logeado o no.
+window.onload = () => {
+  firebase.auth().onAuthStateChanged(function (user) {
+    if (user) {
+      console.log('Usuario Logueado');
+      login.classList.add("hiden");
+      logout.classList.remove("hiden");
+      username.innerHTML = `Bienvenida ${user.displayName}`;
+      //Llamando a Data Firebase///////////////////
+      const ubicacionObject = firebase.database().ref('user-posts').child(user.uid);
+        ubicacionObject.on('child_added', snap => {
+            console.log(snap.val().body);
+        })
+        console.log("ubicacion  " + ubicacionObject);
+      /////////////////777//////////
+
+    } else {
+      console.log('Sin usuario');
+      login.classList.remove("hiden");
+      logout.classList.add("hiden");
+    }
+  });
+
 const bd = document.getElementById("bd");
 const post = document.getElementById("post");
 const posts  = document.getElementById("posts");
@@ -9,6 +39,7 @@ const posts  = document.getElementById("posts");
 
 goToLogin = () => {
   window.location.assign("../index.html");
+
 }
 
 
@@ -112,18 +143,4 @@ btnSave.addEventListener('click', () => {
   contPost.appendChild(btnLike);
   posts.appendChild(contPost);
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
