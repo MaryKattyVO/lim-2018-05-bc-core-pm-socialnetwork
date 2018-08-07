@@ -2,26 +2,13 @@ const userNameProfile = document.getElementById('user-name-profile');
 const userNamePost = document.getElementById('user-name-post');
 const logout = document.getElementById('logout');
 const btnSave = document.getElementById('btnSave');
-const post = document.getElementById('post');
-const posts = document.getElementById('posts');
+const bd = document.getElementById("bd");
+const post = document.getElementById("post");
+const posts  = document.getElementById("posts");
 
-//Verifica si usuario esta logeado o no.
-//Onload guarda informaciòn de la sesiòn iniciada lo cual permite
-//no volver a ingresar datos si no se ha cerrado sesion
-//Verifica si usuario esta logeado o no.
-window.onload = () => {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      console.log('Usuario Logueado');
-      login.classList.add("hiden");
-      logout.classList.remove("hiden");
-      username.innerHTML = `Bienvenida ${user.displayName}`;
-    } else {
-      console.log('Sin usuario');
-      login.classList.remove("hiden");
-      logout.classList.add("hiden");
-    }
-  });
+
+goToLogin = () => {
+  window.location.assign("../index.html");
 }
 
 
@@ -126,40 +113,3 @@ btnSave.addEventListener('click', () => {
   posts.appendChild(contPost);
 })
 
-
-
-
-
-//Evento logearse
-btnLogout.addEventListener('click', () => {
-  firebase.auth().signOut().then(function () {
-    console.log('Cerró Sesión');
-    login.classList.remove("hiden");
-    logout.classList.add("hiden");
-  }).catch(function (error) {
-    console.log('Error al cerrar Sesión');
-  });
-})
-
-//Evento logearse con Facebook
-btnFacebook.addEventListener('click', () => {
-  login.classList.add("hiden");
-  logout.classList.remove("hiden");
-
-
-//Evento logearse con Google
-btnGoogle.addEventListener('click', () => {
-  login.classList.add("hiden");
-  logout.classList.remove("hiden");
-  var provider = new firebase.auth.GoogleAuthProvider();
-
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) { console.log('Login Google') })
-    .catch(function (error) {
-      console.log(error.code);
-      console.log(error.message);
-      console.log(error.email);
-      console.log(error.credential);
-    });
-
-});

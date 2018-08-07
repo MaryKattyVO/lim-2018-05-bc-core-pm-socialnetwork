@@ -59,14 +59,13 @@
                     <input type="text" id="name-register" class="input-name" placeholder="Nombre">
                     <input type="text" id="lastname-register" class="input-lastname" placeholder="Apellidos">
                     <input type="email" id="email-register" class="input-email-register" placeholder="Correo electrónico"><br>
-                    <span id="emailOK2"></span>
+                    <span id="emailOK2"></span><br>
                     <input type="password" id="password-register1" class="input-password-register1" placeholder="Contraseña"><br>
                     <span class="innerText2" id="passwordOK2"></span> 
                     <input type="password" id="password-register2" class="input-password-register2" placeholder="Repetir contraseña">
                     <br>
-                    <input type="checkbox" id="register-terminos" class="checkbox-condiciones">
+                    <input type="checkbox" id="register-terminos" class="checkbox-condiciones" checked>
                     <label for="register-terminos">Acepto los términos y condiciones</label>
-                    <span class="innerText3" id="checkboxOK"></span> 
                     <br>
                     <br>
                     <input type="button" id="btn-register-user" class="button-register" value="REGISTRARME">
@@ -96,6 +95,11 @@
             </div>
         </div>
 
-<script type="text/javascript" src="app.js"></script>
+        <!-- Inicializa Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+        <script src="config.js"></script>
+        <script src="index.js"></script>
+        <script src="app.js"></script>
 </body>
+
 </html>

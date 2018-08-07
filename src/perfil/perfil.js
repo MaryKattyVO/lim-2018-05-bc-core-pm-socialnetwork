@@ -28,3 +28,13 @@ btnLogout.addEventListener('click', () => {
     });
 })
 
+//contador de click
+const contador= document.getElementById('contar');
+console.log(contador);
+
+const sumando= document.getElementById('contador');
+
+let contandoAlDarleClick=0;
+contador.addEventListener('click', () => {
+    sumando.innerHTML = contandoAlDarleClick += 1;
+})
