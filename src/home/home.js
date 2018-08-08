@@ -16,7 +16,7 @@ window.onload = () => {
             ubicacionObject.on('child_added', snap => {
                 console.log(snap.val().body);
             });
-            console.log("ubicacion  " + ubicacionObject)
+            console.log("ubicacion" + ubicacionObject)
             /////////////////777//////////
 
         } else {
@@ -67,7 +67,7 @@ btnToPost.addEventListener('click', () => {
     const newPost = writeNewPost(userId, post.value);
 
     const nameUsers = document.createElement('p');
-    nameUsers.setAttribute('id', user.displayName);
+    nameUsers.setAttribute('id', '');
 
     const photoUser = document.createElement('img');
     photoUser.setAttribute('src', '../../image/user.jpg');
