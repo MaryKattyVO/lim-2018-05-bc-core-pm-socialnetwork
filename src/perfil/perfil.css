@@ -149,7 +149,7 @@ table{
   margin: 10px;
 }
 
-#bd, .personal-post{
+.bd, .personal-post{
   background-color: #E5E3E3;
   border-radius: 5px;
   width: 95%;

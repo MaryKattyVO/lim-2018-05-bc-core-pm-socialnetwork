@@ -8,7 +8,6 @@ const bd = document.getElementById("bd");
 const post = document.getElementById('post');
 const posts = document.getElementById('posts');
 
-
 goToHome = () => {
   window.location.assign("home/home.html");
 }
@@ -17,12 +16,24 @@ goToLogin = () => {
   window.location.assign("../index.html");
 };
 
+getUserForId = (uid, callback) => {
+  const userRef = firebase.database().ref('users/' + uid);
+  userRef.once('value', (snap) => {
+    callback(snap.val());
+  })
+}
+
 updateOrCreateUser = (user) => {
   firebase.database().ref('users/' + user.uid).set(
     {
+<<<<<<< HEAD
       fullname: user.displayName,
+=======
+      //Valores que se van a crear en la BD
+      fullName: user.displayName,
+>>>>>>> cfc252087dec0f046e0c497d0113fd57c4dab628
       email: user.email,
-      profile_picture: user.photoURL
+      profilePicture: user.photoURL
     },
     
     (error) => {
@@ -37,8 +48,31 @@ updateOrCreateUser = (user) => {
   );
 }
 
+<<<<<<< HEAD
 //Pintar post de usuarios
 const writeNewPost = (uid, body) => {
+=======
+getPostForId = (uid, callback) => {
+  const ubicationPosts = firebase.database().ref('user-posts').child(uid);
+  ubicationPosts.on('value', snap => {
+    callback(snap.val());
+  });
+}
+
+getPost = (callback) => {
+  const ubicationPosts = firebase.database().ref('posts');
+  ubicationPosts.once('value', (snap) => {
+    callback(snap);
+  })
+}
+
+writeNewPost = (uid, body, mode) => {
+  var postData = {
+    uid: uid, //  ESTO ES EL ID DE USUARIO
+    body: body, // ESTO ES EL CONTENIDO DEL TEXTAREA
+    mode: mode,
+  };
+>>>>>>> cfc252087dec0f046e0c497d0113fd57c4dab628
 
   var newPostKey = firebase.database().ref().child('posts').push().key;
 

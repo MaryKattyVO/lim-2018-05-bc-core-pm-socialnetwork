@@ -39,14 +39,14 @@ btnRegister.addEventListener('click', () => {
 registerUser.addEventListener('click', () => {
     firebase.auth().createUserWithEmailAndPassword(emailRegister.value, passwordRegister1.value)
         .then(function () {
-            
+
             let user = {
                 uid: firebase.auth().currentUser.uid,
                 email: emailRegister.value,
                 displayName: nameRegister.value + ' ' + lastName.value,
                 photoURL: ''
             }
-            
+
             updateOrCreateUser(user);
         })
         .catch(function (error) {
@@ -109,7 +109,7 @@ btnGoogle.addEventListener('click', () => {
 });
 
 
-//LOGIN validación correo 
+//LOGIN validación correo
 document.getElementById('email').addEventListener('input', () => {
     campo = event.target;
     valido = document.getElementById('emailOK');
@@ -124,7 +124,7 @@ document.getElementById('email').addEventListener('input', () => {
 });
 
 
-//REGISTER validación correo 
+//REGISTER validación correo
 document.getElementById('email-register').addEventListener('input', () => {
     campo = event.target;
     valido = document.getElementById('emailOK2');
