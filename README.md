@@ -2,7 +2,7 @@
 
 ## Integrantes
 
-   * Maricruz J Enrique Rivera
+   * Maricruz J. Enrique Rivera
    * Mary Katty Vicuña Ore
    * Patricia Vidal Ramirez
 
