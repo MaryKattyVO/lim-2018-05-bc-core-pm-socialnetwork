@@ -8,23 +8,6 @@ let newPostObject = {};
 window.onload = () => {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-<<<<<<< HEAD
-            console.log('Usuario Logueado');
-            logout.classList.remove("hiden");
-            userNameProfile.innerHTML = `${user.displayName}`;
-            userNamePost.innerHTML = `${user.displayName}`;
-            photo.innerHTML = `<div><img src="${user.photoURL}" alt="perfil" width="50" height="50"><div>`
-            console.log(user.uid);
-
-            //Llamando a Data Firebase///////////////////
-            const ubicacionObject = firebase.database().ref('user-posts').child(user.uid);
-            ubicacionObject.on('child_added', snap => {
-                console.log(snap.val().body);
-            });
-            console.log("ubicacion  " + ubicacionObject)
-            /////////////////777//////////
-
-=======
             newPostObject.uid = firebase.auth().currentUser.uid;
 
             getUserForId(user.uid, (userDatabase) => {
@@ -49,7 +32,6 @@ window.onload = () => {
             })
 
             newPostObject.uid = firebase.auth().currentUser.uid;
->>>>>>> cfc252087dec0f046e0c497d0113fd57c4dab628
         } else {
             console.log('Sin usuario');
             goToLogin();
