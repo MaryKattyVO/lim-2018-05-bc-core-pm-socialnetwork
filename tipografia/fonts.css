@@ -1,0 +1,18 @@
+@font-face{
+    font-family: MyriadPro;
+    src: url(MyriadPro-Regular.otf);
+    font-weight: 500;
+}
+
+@font-face{
+    font-family: MyriadPro;
+    src: url(MyriadPro-It.otf);
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face{
+    font-family: Inkfree;
+    src: url(Inkfree.ttf);
+    font-weight: 500;
+}

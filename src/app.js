@@ -1,115 +1,84 @@
-const login = document.getElementById('section-login');
+const userNameProfile = document.getElementById('user-name-profile');
+const userNamePost = document.getElementById('user-name-post');
 const logout = document.getElementById('logout');
-const username = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const btnRegister1 = document.getElementById('btnRegister1')
-const btnRegister2 = document.getElementById('btnRegister2')
-const btnLogin = document.getElementById('btnLogin')
-const btnLogout = document.getElementById('btnLogout')
-const btnFacebook = document.getElementById('btnFacebook');
-const btnGoogle = document.getElementById('btnGoogle');
-const register = document.getElementById('register');
-const usernameRegister = document.getElementById('username-register');
-const emailRegister = document.getElementById('email-register');
-const passwordRegister1 = document.getElementById('password-register1');
-const passwordRegister2 = document.getElementById('password-register1');
-const bd = document.getElementById('bd');
-const btnSave = document.getElementById('btnSave');
+const btnToPost = document.getElementById('btnSave');
+const postState = document.getElementById('post-state');
+
+const bd = document.getElementById("bd");
 const post = document.getElementById('post');
 const posts = document.getElementById('posts');
 
-window.onload = () => {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      console.log('Usuario Logueado');
-      login.classList.add("hiden");
-      logout.classList.remove("hiden");
-      username.innerHTML = `Bienvenida ${user.displayName}`;
-    } else {
-      console.log('Sin usuario');
-      login.classList.remove("hiden");
-      logout.classList.add("hiden");
+goToHome = () => {
+  window.location.assign("home/home.html");
+}
+
+goToLogin = () => {
+  window.location.assign("../index.html");
+};
+
+getUserForId = (uid, callback) => {
+  const userRef = firebase.database().ref('users/' + uid);
+  userRef.once('value', (snap) => {
+    callback(snap.val());
+  })
+}
+
+updateOrCreateUser = (user) => {
+  firebase.database().ref('users/' + user.uid).set(
+    {
+      //Valores que se van a crear en la BD
+      fullName: user.displayName,
+      email: user.email,
+      profilePicture: user.photoURL
+    },
+
+    (error) => {
+      if (error) {
+        console.log(error);
+        console.log("error al guardar data");
+      } else {
+        console.log("data guardada");
+        goToHome();
+      }
     }
+  );
+}
+
+getPostForId = (uid, callback) => {
+  const ubicationPosts = firebase.database().ref('user-posts').child(uid);
+  ubicationPosts.on('value', snap => {
+    callback(snap.val());
   });
 }
 
-btnRegister1.addEventListener('click', () => {
-  login.classList.add("hiden");
-  register.classList.remove("hiden");
-})
+getPost = (callback) => {
+  const ubicationPosts = firebase.database().ref('posts');
+  ubicationPosts.once('value', (snap) => {
+    callback(snap);
+  })
+}
 
-btnRegister2.addEventListener('click', () => {
-  register.classList.add("hiden");
- logout.classList.remove("hiden");
-  window.location.assign("content.html");
-  firebase.auth().createUserWithEmailAndPassword(emailRegister.value, passwordRegister1.value)
-    .then(() => {
-      console.log('Usuario Creado');
-    })
-    .catch(function (error) {
-      console.log(error.code, ' : ', error.message);
-    });
-})
+writeNewPost = (uid, body, mode) => {
+  var postData = {
+    uid: uid, //  ESTO ES EL ID DE USUARIO
+    body: body, // ESTO ES EL CONTENIDO DEL TEXTAREA
+    mode: mode,
+  };
 
-btnLogin.addEventListener('click', () => {
-  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-    .then(() => {
-      console.log('Verificado')
-      login.classList.add("hiden");
-      logout.classList.remove("hiden");
-    })
-    .catch(function (error) {
-      console.log('Contraseña Incorrecta')
-    });
-})
+  //8. Get a key for a new Post.
+  // AQUI CREAMOS UN NUEVO KEY PARA CADA POSTS DENTRO DE POSTS(esto en database)
+  var newPostKey = firebase.database().ref().child('posts').push().key;
 
-btnLogout.addEventListener('click', () => {
-  firebase.auth().signOut().then(function () {
-    console.log('Cerró Sesión');
-    login.classList.remove("hiden");
-    logout.classList.add("hiden");
-  }).catch(function (error) {
-    console.log('Error al cerrar Sesión');
-  });
-})
+  //9. Write the new post's data simultaneously in the posts list and the user's post list.
+  //updates : objeto vacio
+  var updates = {};
+  //instancia creadas.
+  //postData: valor del text area
+  //posts: se crea por cada usuario un post.
+  //newPostKey: cada vez que se crea un post se crea un key.
+  updates['/posts/' + newPostKey] = postData;
+  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
-btnFacebook.addEventListener('click', () => {
-  login.classList.add("hiden");
-  logout.classList.remove("hiden");
-
-  var provider = new firebase.auth.FacebookAuthProvider();
-  provider.setCustomParameters({
-    'display': 'popup'
-  });
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) { console.log('Logueado con Fb') })
-    .catch(function (error) {
-      console.log(error.code);
-      console.log(error.message);
-      console.log(error.email);
-      console.log(error.credential);
-    });
-  username.innerHTML = "";
-  email.innerHTML = "";
-})
-
-btnGoogle.addEventListener('click', () => {
-  login.classList.add("hiden");
-  logout.classList.remove("hiden");
-  var provider = new firebase.auth.GoogleAuthProvider();
-
-  //provider.setCustomParameters({
-  //  'login_hint': 'user@example.com'
-  //});
-
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) { console.log('Login Google') })
-    .catch(function (error) {
-      console.log(error.code);
-      console.log(error.message);
-      console.log(error.email);
-      console.log(error.credential);
-    });
-
-});
+  firebase.database().ref().update(updates);
+  return newPostKey;
+}
