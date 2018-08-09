@@ -1,99 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <title>Happy Babies</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+    crossorigin="anonymous">
+  <title>Index</title>
 </head>
 
 <body>
-    <!-- Autenticación -->
-    <div class="login">
-
-        <!-- Sección Login -->
-        <div id="section-login" class="section-login">
-            <br>
-            <picture>
-                <img src="../image/logo.png">
-            </picture>
-            <br>
-            <br>
-            <br>
-            <br>
-            <input type="email" id="email" class="input-email" placeholder="Correo electrónico" required>
-            <br>
-
-            <br>
-            <input type="password" id="password" class="input-password" placeholder="Contraseña" required>
-            <br>
-            <br>
-            <input type="button" id="btnLogin" class="button-login" value="Ingresar">
-            <br>
-            <br> Ingresar con :
-            <br>
-            <br>
-            <input type="button" id="btnGoogle" class="button-google" value="google" class="login-google">
-            <br>
-            <input type="button" id="btnFacebook" class="button-facebook" value="facebook" class="login-facebook">
-            <br> - o -
-            <br>
-            <input type="button" id="btnRegister1" class="button-registrarse" value="Quiero registrarme">
-        </div>
-
-        <!-- Sección Registro -->
-        <div id="register" class="hiden">
-            <img src="../image/logo.png">
-            <br>
-            <br>
-            <br>
-            <br>
-            <input type="text" id="name-register" class="" placeholder="Nombre">
-            <br>
-            <br>
-            <input type="text" id="lastname-register" class="" placeholder="Apellidos">
-            <br>
-            <br>
-            <input type="email" id="email-register" class="" placeholder="Correo electrónico">
-            <br>
-            <br>
-            <input type="password" id="password-register1" class="" placeholder="Contraseña">
-            <br>
-            <input type="password" id="password-register2" class="" placeholder="Repetir contraseña">
-            <br>
-            <br>
-            <input type="checkbox" id="register-terminos" class="checkbox-condiciones">
-            <label for="register-terminos"> Acepto los terminos y condiciones</label>
-            <br>
-            <br>
-            <input type="button" id="btnRegister2" class="" value="REGISTRARME">
-        </div>
-
-        <!--LogOut -->
-        <div id="logout" class="hiden">
-            <p id="username"></p>
-            <input type="button" name="" value="Logout" id="btnLogout">
-        </div>
+  <div class="content">
+    <div class="content-presentation">
+      <div class="presentation">
+        <img src="../image/LogoHb-transparencia.png">
+        <p id="presentation-text" class="presentation-text">Únete y
+          <span<b>comparte</b> en el fascinante
+            <br> mundo de la
+            <b>paternidad.</b>
+        </p>
+      </div>
+    </div>
+    <div class="content-login-register">
+      <div id="login" class="login">
+        <form>
+          <div id="logo" class="hiden">
+            <img src="../image/LogoHb-transparencia.png">
+          </div>
+          <label>¿Ya tienes una cuenta?</label>
+          <input type="email" id="email" class="input-email" placeholder="Correo electrónico" required>
+          <span class="innerText" id="emailOK"></span>
+          <input type="password" id="password" class="input-password" placeholder="Contraseña" required>
+          <span class="innerText2" id="passwordOK"></span>
+          <input type="button" id="btnLogin" class="button-login" value="INICIAR SESIÓN">
+          <label>Ingresar con :</label>
+          <div class="button-google-facebook">
+            <input type="button" id="btnGoogle" value="" class="login-google">
+            <input type="button" id="btnFacebook" value="" class="login-facebook">
+          </div>
+          <input type="button" id="btnRegister" class="button-registrarse" value="QUIERO REGISTRARME">
+        </form>
+      </div>
+      <div id="register" class="register">
+        <form>
+          <div id="logo" class="hiden">
+            <img src="../image/LogoHb-transparencia.png">
+          </div>
+          <input type="text" id="name-register" class="input-name" placeholder="Nombre">
+          <input type="text" id="lastname-register" class="input-lastname" placeholder="Apellidos">
+          <input type="email" id="email-register" class="input-email-register" placeholder="Correo electrónico">
+          <span id="emailOK2"></span>
+          <input type="password" id="password-register1" class="input-password-register1" placeholder="Contraseña">
+          <span class="innerText2" id="passwordOK2"></span>
+          <input type="password" id="password-register2" class="input-password-register2" placeholder="Repetir contraseña">
+          <input type="checkbox" id="register-terminos" class="checkbox-condiciones" checked>
+          <label for="register-terminos">Acepto los términos y condiciones</label>
+          <input type="button" id="btn-register-user" class="button-register" value="REGISTRARME">
+        </form>
+      </div>
     </div>
 
-    <!-- Initialize Firebase -->
+    <!-- Inicializa Firebase -->
     <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
-    <script>
-
-        var config = {
-            apiKey: "AIzaSyAy08U8EI5dbQZXauEIeRP1e6GgfmKg90k",
-            authDomain: "fir-prueba-labo.firebaseapp.com",
-            databaseURL: "https://fir-prueba-labo.firebaseio.com",
-            projectId: "fir-prueba-labo",
-            storageBucket: "fir-prueba-labo.appspot.com",
-            messagingSenderId: "504725074027"
-        };
-        firebase.initializeApp(config);
-    </script>
-
+    <script src="config.js"></script>
     <script src="app.js"></script>
+    <script src="index.js"></script>
+
+
 </body>
 
 </html>
