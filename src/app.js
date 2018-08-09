@@ -20,12 +20,11 @@ goToLogin = () => {
 updateOrCreateUser = (user) => {
   firebase.database().ref('users/' + user.uid).set(
     {
-      //Valores que se van a crear en la BD
       fullname: user.displayName,
       email: user.email,
       profile_picture: user.photoURL
     },
-
+    
     (error) => {
       if (error) {
         console.log(error);
@@ -38,27 +37,31 @@ updateOrCreateUser = (user) => {
   );
 }
 
-writeNewPost = (uid, body) => {
+//Pintar post de usuarios
+const writeNewPost = (uid, body) => {
 
-  var postData = {
-    uid: uid, //  ESTO ES EL ID DE USUARIO
-    body: body, // ESTO ES EL CONTENIDO DEL TEXTAREA
-  };
-
-  //8. Get a key for a new Post.
-  // AQUI CREAMOS UN NUEVO KEY PARA CADA POSTS DENTRO DE POSTS(esto en database)
   var newPostKey = firebase.database().ref().child('posts').push().key;
 
-  //9. Write the new post's data simultaneously in the posts list and the user's post list.
-  //updates : objeto vacio
+  var postData = {
+    uid: uid, 
+    body: body,
+    key: newPostKey,
+    like: 0 
+  };
+  
+  //Escribir nuevo post
   var updates = {};
-  //instancia creadas.
-  //postData: valor del text area
-  //posts: se crea por cada usuario un post.
-  //newPostKey: cada vez que se crea un post se crea un key.
   updates['/posts/' + newPostKey] = postData;
   updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
   firebase.database().ref().update(updates);
   return newPostKey;
+
+  const returnData = (uid) => {
+    console.log('usuario UID : '+ uid);
+  }
+}
+
+//Llamar datos
+const returnData = (uid) => {
+  console.log('Uid de usuario'+uid);
 }

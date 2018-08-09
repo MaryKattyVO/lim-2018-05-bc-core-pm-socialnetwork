@@ -9,6 +9,7 @@ window.onload = () => {
             logout.classList.remove("hiden");
             userNameProfile.innerHTML = `${user.displayName}`;
             userNamePost.innerHTML = `${user.displayName}`;
+            photo.innerHTML = `<div><img src="${user.photoURL}" alt="perfil" width="50" height="50"><div>`
             console.log(user.uid);
 
             //Llamando a Data Firebase///////////////////
@@ -16,7 +17,7 @@ window.onload = () => {
             ubicacionObject.on('child_added', snap => {
                 console.log(snap.val().body);
             });
-            console.log("ubicacion" + ubicacionObject)
+            console.log("ubicacion  " + ubicacionObject)
             /////////////////777//////////
 
         } else {
@@ -25,6 +26,8 @@ window.onload = () => {
         }
     });
 }
+/////LLAMANDO DATOS ///////////////////7777777777
+
 
 // evento que permite cerrar sesion
 btnLogout.addEventListener('click', () => {
@@ -67,7 +70,7 @@ btnToPost.addEventListener('click', () => {
     const newPost = writeNewPost(userId, post.value);
 
     const nameUsers = document.createElement('p');
-    nameUsers.setAttribute('id', '');
+    nameUsers.setAttribute('id', user.displayName);
 
     const photoUser = document.createElement('img');
     photoUser.setAttribute('src', '../../image/user.jpg');
