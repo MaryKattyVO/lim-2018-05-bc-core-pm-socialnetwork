@@ -12,7 +12,7 @@ window.onload = () => {
 
       uid = user.uid;
       getUserForId(user.uid, (userDatabase) => {
-        console.log(userDatabase);
+      
         userFromDatabase = userDatabase;
         userNameProfile.innerHTML = userDatabase.fullName;
         userNamePost.innerHTML = userDatabase.fullName;
@@ -25,7 +25,7 @@ window.onload = () => {
 
       postRef.on('child_added', (snapshot) => {
         let post = snapshot.val();
-        console.log(post);
+    
         if (user.uid === post.uid) {
           myPosts(snapshot.key, post);
         } else if (post.mode === 'public') {
@@ -40,9 +40,7 @@ window.onload = () => {
         if (bodyPostView != null && uid !== post.uid) {
           bodyPostView.innerHTML = post.body;
         }
-        console.log(post);
         const postLike = document.getElementById('count-like-' + snapshot.key);
-        console.log(post.like);
         postLike.innerHTML = post.like;
 
       });
@@ -73,8 +71,6 @@ btnToPost.addEventListener('click', () => {
 
 btnLogout.addEventListener('click', () => {
   firebase.auth().signOut().then(function () {
-    console.log('Cerró Sesión');
-    logout.classList.add("hiden");
     goToLogin();
   }).catch(function (error) {
     console.log('Error al cerrar Sesión');
