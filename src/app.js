@@ -25,10 +25,10 @@ getUserForId = (uid, callback) => {
 
 updateOrCreateUser = (user) => {
   firebase.database().ref('users/' + user.uid).set({
-      fullName: user.displayName,
-      email: user.email,
-      profilePicture: user.photoURL
-    },
+    fullName: user.displayName,
+    email: user.email,
+    profilePicture: user.photoURL
+  },
     (error) => {
       if (error) {
         console.log(error);
@@ -57,22 +57,22 @@ getPost = (uid, callback) => {
 
 createNewPost = (uid, body, mode, user) => {
 
-    let postData = {
-      uid: uid,
-      body: body,
-      mode: mode,
-      fullName:  user.fullName,
-      photoURL: user.profilePicture,
-      like: 0,
-     // created: new Date().getTime()
-    };
+  let postData = {
+    uid: uid,
+    body: body,
+    mode: mode,
+    fullName: user.fullName,
+    photoURL: user.profilePicture,
+    like: 0,
+    // created: new Date().getTime()
+  };
 
-    var newPostKey = firebase.database().ref().child('posts').push().key;
-    var updates = {};
+  var newPostKey = firebase.database().ref().child('posts').push().key;
+  var updates = {};
 
-    updates['/posts/' + newPostKey] = postData;
-    updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+  updates['/posts/' + newPostKey] = postData;
+  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
 
-    firebase.database().ref().update(updates);
+  firebase.database().ref().update(updates);
 
 }

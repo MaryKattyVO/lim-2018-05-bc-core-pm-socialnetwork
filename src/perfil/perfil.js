@@ -87,15 +87,15 @@ myPosts = (postKey, post) => {
   textPost.setAttribute("disabled", 'true');
   textPost.innerHTML = post.body;
 
-/*   const contador = document.getElementById('contar');
-  const sumando = document.getElementById('contador');
-  let count = 0;
-  let contandoAlDarleClick = 0; */
-/*   btnLike.addEventListener('click', () => {
-    count = contandoAlDarleClick += 1;
-    sumando.innerHTML = count;
-    postObject.countLike = count;
-  }); */
+  /*   const contador = document.getElementById('contar');
+    const sumando = document.getElementById('contador');
+    let count = 0;
+    let contandoAlDarleClick = 0; */
+  /*   btnLike.addEventListener('click', () => {
+      count = contandoAlDarleClick += 1;
+      sumando.innerHTML = count;
+      postObject.countLike = count;
+    }); */
 
   btnDelete.addEventListener('click', () => {
 
@@ -145,7 +145,8 @@ myPosts = (postKey, post) => {
 }
 
 
-btnToPost.addEventListener('click', () => {;
+btnToPost.addEventListener('click', () => {
+  
   if (bodyUserPost.value.length === 0) {
     alert("Creo que no haz escrito algun texto para publicar");
     return;
