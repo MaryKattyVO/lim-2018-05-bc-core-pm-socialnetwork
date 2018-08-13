@@ -1,7 +1,6 @@
 const selectMode = document.getElementById('select-mode');
 const photoUserProfile = document.getElementById('photo-user-profile');
 const photoUserPost = document.getElementById('photo-user-post');
-
 const bodyUserPost = document.getElementById('textarea-post-init');
 
 let uid;
@@ -34,6 +33,8 @@ window.onload = () => {
         if (bodyPostView != null && uid !== post.uid) {
           bodyPostView.innerHTML = post.body;
         }
+        const postLike = document.getElementById('count-like-' + snapshot.key);
+        postLike.innerHTML = post.like;
       });
 
       postRef.on('child_removed', (snapshot) => {
@@ -42,15 +43,11 @@ window.onload = () => {
           postView.remove();
         }
       });
-
-
     } else {
       goToLogin();
     }
   });
 }
-
-
 
 myPosts = (postKey, post) => {
 
@@ -73,9 +70,11 @@ myPosts = (postKey, post) => {
   btnDelete.setAttribute("type", "button");
 
   const btnLike = document.createElement('button');
-  btnLike.style.border = 'none';
-  btnLike.innerHTML = `<button value="Me gusta" id="contar" class="button-like"><img id="imgLike" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALASURBVGhD7Zi7bhNBFIZNgcSl4ioKEC0NHUiIAlHxBJZQZhyMKNKSlAgegFewkuysY88YI6GEgHgGJKCgSqiAUIKEQdyCAHN+c4LQcsbZtbMXS/tJv7LZPZd/Z2cv40pJSUnJZGCVPRBod80oez9Ubt0o9ylU9nOo7Uuj3QP6e93U7x7jcC+Iofw5yn2IXNT4U8utk5bRA704fHy61e5eo+1NavIh1K4/XPYbxc3bKXuY0/+yWO0eoZgFqrX5f15Eyr0f9KybPZw+Gi3dOk4j9ExsMkR0Rd6Gqn2By1SM7lwc7BNit9FTeOAyyRiY13ZDKBpPyn1valeHsC3GxJLdSHwSmDajjHxUNA1+QNKxJKL77gk8sb3toRG7JRXKVcrdYHvDma92D8a7YbOW7cEb2/SDx5hcIH8Z1b7KNv3QpVqWkguie2zTD90wL4TEQgje2KYfugIfpeRCiLyxTT8U9FVMLoDokfyFbfoZ6+WVvl6xTT8UtBpJKozoc2SFbfqhKTQnJRdBdAKzbNPPgmqfpJP4KRXIVeQp9jcRLpVYJEfFmj5bBPrOWbrjf0mFchGNfnPanWF78aCXRigWy0FYJLGt+GDpV4SPOnhYqi0dZVvJCGv2ilQ0Y9XYzmhQARMpmJ2UXWQbo9OYWd1HN/RzsUGKQk/0ZhvjgecvzcU3UqM0hF4jL+Z9BKp9GqsiqeHOyvbQi9vuLEGtcz7dJ5PtGd06x+3SASeRzpXIwPwWgze1cu9kI8mFH71Qk8tng5myp2jUxl470Bv/NWpx2WwJLndOkIm1qKkEWkMNLpcPzenmIRrFx4K5oUIOcrlMvtC3yn568TySjEpCLHI4vRg0Zhq743zBIgaxnFYs+pX+Lnqi3JaMQziGGA4vLmR09t8FEbaxjw9PBoHqKDK+CWGbd08Woe5cgvjfkpKSkiiVym9E/7T2Q9wMrAAAAABJRU5ErkJggg==">
-    <label id="contador">0</label></button>`;
+  btnLike.innerHTML = `<img id="imgLike" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALASURBVGhD7Zi7bhNBFIZNgcSl4ioKEC0NHUiIAlHxBJZQZhyMKNKSlAgegFewkuysY88YI6GEgHgGJKCgSqiAUIKEQdyCAHN+c4LQcsbZtbMXS/tJv7LZPZd/Z2cv40pJSUnJZGCVPRBod80oez9Ubt0o9ylU9nOo7Uuj3QP6e93U7x7jcC+Iofw5yn2IXNT4U8utk5bRA704fHy61e5eo+1NavIh1K4/XPYbxc3bKXuY0/+yWO0eoZgFqrX5f15Eyr0f9KybPZw+Gi3dOk4j9ExsMkR0Rd6Gqn2By1SM7lwc7BNit9FTeOAyyRiY13ZDKBpPyn1valeHsC3GxJLdSHwSmDajjHxUNA1+QNKxJKL77gk8sb3toRG7JRXKVcrdYHvDma92D8a7YbOW7cEb2/SDx5hcIH8Z1b7KNv3QpVqWkguie2zTD90wL4TEQgje2KYfugIfpeRCiLyxTT8U9FVMLoDokfyFbfoZ6+WVvl6xTT8UtBpJKozoc2SFbfqhKTQnJRdBdAKzbNPPgmqfpJP4KRXIVeQp9jcRLpVYJEfFmj5bBPrOWbrjf0mFchGNfnPanWF78aCXRigWy0FYJLGt+GDpV4SPOnhYqi0dZVvJCGv2ilQ0Y9XYzmhQARMpmJ2UXWQbo9OYWd1HN/RzsUGKQk/0ZhvjgecvzcU3UqM0hF4jL+Z9BKp9GqsiqeHOyvbQi9vuLEGtcz7dJ5PtGd06x+3SASeRzpXIwPwWgze1cu9kI8mFH71Qk8tng5myp2jUxl470Bv/NWpx2WwJLndOkIm1qKkEWkMNLpcPzenmIRrFx4K5oUIOcrlMvtC3yn568TySjEpCLHI4vRg0Zhq743zBIgaxnFYs+pX+Lnqi3JaMQziGGA4vLmR09t8FEbaxjw9PBoHqKDK+CWGbd08Woe5cgvjfkpKSkiiVym9E/7T2Q9wMrAAAAABJRU5ErkJggg==">
+  `;//<label id="countLike">0</label>
+  const like = document.createElement('label');
+  like.setAttribute('id', 'count-like-' + postKey);
+  like.innerHTML = post.like;
 
   const contPost = document.createElement('div');
   contPost.setAttribute('class', 'bd');
@@ -87,15 +86,15 @@ myPosts = (postKey, post) => {
   textPost.setAttribute("disabled", 'true');
   textPost.innerHTML = post.body;
 
-/*   const contador = document.getElementById('contar');
-  const sumando = document.getElementById('contador');
-  let count = 0;
-  let contandoAlDarleClick = 0; */
-/*   btnLike.addEventListener('click', () => {
-    count = contandoAlDarleClick += 1;
-    sumando.innerHTML = count;
-    postObject.countLike = count;
-  }); */
+  contPost.appendChild(nameUsers);
+  contPost.appendChild(photoUser);
+  contPost.appendChild(textPost);
+  contPost.appendChild(btnLike);
+  contPost.appendChild(like);
+  contPost.appendChild(btnUpdate);
+  contPost.appendChild(btnDelete);
+
+  posts.appendChild(contPost);
 
   btnDelete.addEventListener('click', () => {
 
@@ -135,18 +134,12 @@ myPosts = (postKey, post) => {
     }
 
   });
-  contPost.appendChild(nameUsers);
-  contPost.appendChild(photoUser);
-  contPost.appendChild(textPost);
-  contPost.appendChild(btnLike);
-  contPost.appendChild(btnUpdate);
-  contPost.appendChild(btnDelete);
-  posts.appendChild(contPost);
 }
 
 
-btnToPost.addEventListener('click', () => {;
-  if (bodyUserPost.value.length === 0) {
+btnToPost.addEventListener('click', () => {
+
+  if (bodyUserPost.value.trim().length === 0) {
     alert("Creo que no haz escrito algun texto para publicar");
     return;
   }
