@@ -12,7 +12,7 @@ window.onload = () => {
 
       uid = user.uid;
       getUserForId(user.uid, (userDatabase) => {
-      
+
         userFromDatabase = userDatabase;
         userNameProfile.innerHTML = userDatabase.fullName;
         userNamePost.innerHTML = userDatabase.fullName;
@@ -25,7 +25,7 @@ window.onload = () => {
 
       postRef.on('child_added', (snapshot) => {
         let post = snapshot.val();
-    
+
         if (user.uid === post.uid) {
           myPosts(snapshot.key, post);
         } else if (post.mode === 'public') {
@@ -40,8 +40,11 @@ window.onload = () => {
         if (bodyPostView != null && uid !== post.uid) {
           bodyPostView.innerHTML = post.body;
         }
-        const postLike = document.getElementById('count-like-' + snapshot.key);
-        postLike.innerHTML = post.like;
+
+        if (uid !== post.uid) {
+          const postLike = document.getElementById('count-like-' + snapshot.key);
+          postLike.innerHTML = post.like;
+        }
 
       });
 
@@ -137,16 +140,18 @@ myPosts = (postKey, post) => {
   //boton actualizar
   btnUpdate.addEventListener('click', () => {
     const body = document.getElementById('textarea-' + postKey);
+
     if (btnUpdate.value === 'Editar') {
       body.disabled = false;
       btnUpdate.value = 'Guardar';
     } else {
       const changeData = {
+        uid: post.uid,
         body: body.value,
         mode: post.mode,
-        uid: post.uid,
         photoURL: post.photoURL,
-        fullName: post.fullName
+        fullName: post.fullName,
+        like: post.like
       };
 
       var updatesUser = {};
