@@ -1,4 +1,4 @@
-@import url("http://127.0.0.1:5500/tipografia/fonts.css");
+@import url("../../tipografia/fonts.css");
 
 html{
   position: absolute;
@@ -30,7 +30,7 @@ header{
   width: 100%;
   background-color: #A05BA6;
   height: 40px;
-  position: relative;    
+  position: relative;
 }
 
 nav{
@@ -40,7 +40,7 @@ nav{
 ul {
   list-style: none;
 }
-  
+
 nav li a{
   background-color: #A05BA6;
   color: white;
@@ -48,7 +48,7 @@ nav li a{
   padding: 5px 25px;
   display: block;
   float: left;
-  
+
 }
 
 #logout{
@@ -105,7 +105,7 @@ nav li a:hover, .menu-logout:hover{
 
 .friend-and-posts{
   display: flex;
-  
+
 }
 
 .left{
@@ -128,7 +128,7 @@ nav li a:hover, .menu-logout:hover{
 
 .menu-home, .menu-search, .menu-friend, .menu-perfil{
   width: 25px;
-  
+
 }
 
 .user-description{
@@ -238,7 +238,7 @@ input[value="Publicar"] {
 @media only screen and (max-width: 768px) {
   .right{
     display: none;
-  } 
+  }
 
   .profile{
     background-color: #E5E3E3;
@@ -262,12 +262,12 @@ input[value="Publicar"] {
 
   .left, .right, .profile{
     display: none;
-  } 
+  }
 
   .center{
     width: 100%;
   }
- 
+
   .textarea-post, .textarea-posts{
     height: 65px;
     width: 80%;

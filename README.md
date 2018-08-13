@@ -172,9 +172,9 @@ Realizamos entrevista a cinco usuarios de nuestro entorno.
 
 ### Presentación en plataformas digitales (celular, tablet y vista web)
 
-![mockupCel](https://github.com/PatriciaVidal/lim-2018-05-bc-core-pm-socialnetwork/blob/master/image/mockup%20cel.png)
-![mockupTablet](https://github.com/PatriciaVidal/lim-2018-05-bc-core-pm-socialnetwork/blob/master/image/mockup%20tablet.png)
-![mockupWeb](https://github.com/PatriciaVidal/lim-2018-05-bc-core-pm-socialnetwork/blob/master/image/mockup%20web%20es.png)
+![mockupCel](image/mockup-cel.png)
+![mockupTablet](image/mockup-tablet.png)
+![mockupWeb](image/mockup-web.png)
 
   
 ### Pruebas / tests
@@ -208,4 +208,3 @@ Realizamos entrevista a cinco usuarios de nuestro entorno.
 
 
 **Gracias por leer hasta el final.**
-  

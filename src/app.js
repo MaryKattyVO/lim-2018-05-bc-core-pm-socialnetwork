@@ -5,7 +5,7 @@ const btnToPost = document.getElementById('btnSave');
 const postState = document.getElementById('post-state');
 
 const bd = document.getElementById("bd");
-const post = document.getElementById('post');
+const textareaPostInicial = document.getElementById('textarea-post-init');
 const posts = document.getElementById('posts');
 
 goToHome = () => {
@@ -24,14 +24,11 @@ getUserForId = (uid, callback) => {
 }
 
 updateOrCreateUser = (user) => {
-  firebase.database().ref('users/' + user.uid).set(
-    {
-      //Valores que se van a crear en la BD
-      fullName: user.displayName,
-      email: user.email,
-      profilePicture: user.photoURL
-    },
-    
+  firebase.database().ref('users/' + user.uid).set({
+    fullName: user.displayName,
+    email: user.email,
+    profilePicture: user.photoURL
+  },
     (error) => {
       if (error) {
         console.log(error);
@@ -51,42 +48,29 @@ getPostForId = (uid, callback) => {
   });
 }
 
-getPost = (callback) => {
+getPost = (uid, callback) => {
   const ubicationPosts = firebase.database().ref('posts');
   ubicationPosts.once('value', (snap) => {
     callback(snap);
   })
 }
 
-writeNewPost = (uid, body, mode) => {
-  var postData = {
-    uid: uid, //  ESTO ES EL ID DE USUARIO
-    body: body, // ESTO ES EL CONTENIDO DEL TEXTAREA
+createNewPost = (uid, body, mode, user) => {
+
+  let postData = {
+    uid: uid,
+    body: body,
     mode: mode,
+    fullName: user.fullName,
+    photoURL: user.profilePicture,
+    like: 0,
+    // created: new Date().getTime()
   };
 
   var newPostKey = firebase.database().ref().child('posts').push().key;
-
-  var postData = {
-    uid: uid, 
-    body: body,
-    key: newPostKey,
-    like: 0 
-  };
-  
-  //Escribir nuevo post
   var updates = {};
+
   updates['/posts/' + newPostKey] = postData;
   updates['/user-posts/' + uid + '/' + newPostKey] = postData;
   firebase.database().ref().update(updates);
-  return newPostKey;
-
-  const returnData = (uid) => {
-    console.log('usuario UID : '+ uid);
-  }
-}
-
-//Llamar datos
-const returnData = (uid) => {
-  console.log('Uid de usuario'+uid);
 }
