@@ -5,7 +5,7 @@ const btnToPost = document.getElementById('btnSave');
 const postState = document.getElementById('post-state');
 
 const bd = document.getElementById("bd");
-const post = document.getElementById('post');
+const textareaPostInicial = document.getElementById('textarea-post-init');
 const posts = document.getElementById('posts');
 
 goToHome = () => {
@@ -24,14 +24,11 @@ getUserForId = (uid, callback) => {
 }
 
 updateOrCreateUser = (user) => {
-  firebase.database().ref('users/' + user.uid).set(
-    {
-      //Valores que se van a crear en la BD
+  firebase.database().ref('users/' + user.uid).set({
       fullName: user.displayName,
       email: user.email,
       profilePicture: user.photoURL
     },
-
     (error) => {
       if (error) {
         console.log(error);
@@ -51,34 +48,31 @@ getPostForId = (uid, callback) => {
   });
 }
 
-getPost = (callback) => {
+getPost = (uid, callback) => {
   const ubicationPosts = firebase.database().ref('posts');
   ubicationPosts.once('value', (snap) => {
     callback(snap);
   })
 }
 
-writeNewPost = (uid, body, mode) => {
-  var postData = {
-    uid: uid, //  ESTO ES EL ID DE USUARIO
-    body: body, // ESTO ES EL CONTENIDO DEL TEXTAREA
-    mode: mode,
-  };
+createNewPost = (uid, body, mode, user) => {
 
-  //8. Get a key for a new Post.
-  // AQUI CREAMOS UN NUEVO KEY PARA CADA POSTS DENTRO DE POSTS(esto en database)
-  var newPostKey = firebase.database().ref().child('posts').push().key;
+    let postData = {
+      uid: uid,
+      body: body,
+      mode: mode,
+      fullName:  user.fullName,
+      photoURL: user.profilePicture,
+      like: 0,
+     // created: new Date().getTime()
+    };
 
-  //9. Write the new post's data simultaneously in the posts list and the user's post list.
-  //updates : objeto vacio
-  var updates = {};
-  //instancia creadas.
-  //postData: valor del text area
-  //posts: se crea por cada usuario un post.
-  //newPostKey: cada vez que se crea un post se crea un key.
-  updates['/posts/' + newPostKey] = postData;
-  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+    var newPostKey = firebase.database().ref().child('posts').push().key;
+    var updates = {};
 
-  firebase.database().ref().update(updates);
-  return newPostKey;
+    updates['/posts/' + newPostKey] = postData;
+    updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+    firebase.database().ref().update(updates);
+
 }
