@@ -23,7 +23,7 @@ window.onload = () => {
       console.log('Usuario Logueado');
       setTimeout(() => {
         goToHome();
-      }, 1000);
+      }, 2000);
     } else {
       console.log('Sin usuario');
     }
