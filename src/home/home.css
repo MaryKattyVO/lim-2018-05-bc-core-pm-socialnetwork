@@ -1,14 +1,13 @@
-@import url("http://127.0.0.1:5500/tipografia/fonts.css");
-
-html{
-  position: absolute;
+@import url("../../tipografia/fonts.css");
+html {
   width: 100%;
   height: 100%;
   margin: 0px;
   padding: 0px;
 }
 
-body{
+body {
+  position: absolute;
   width: 100%;
   padding: 0px;
   margin: 0px;
@@ -16,21 +15,25 @@ body{
   font-style: italic;
 }
 
-#logo{
+.logo {
   text-align: center;
+}
+
+header {
+  width: 100%;
+}
+
+textarea {
+  font-family: MyriadPro;
+  font-style: italic;
+  font-size: 15px;
 }
 
 header{
   width: 100%;
   background-color: #A05BA6;
   height: 40px;
-  position: relative;    
-}
-
-textarea{
-  font-family: MyriadPro;
-  font-style: italic;
-  font-size: 15px;
+  position: relative;
 }
 
 nav{
@@ -40,7 +43,7 @@ nav{
 ul {
   list-style: none;
 }
-  
+
 nav li a{
   background-color: #A05BA6;
   color: white;
@@ -48,9 +51,10 @@ nav li a{
   padding: 5px 25px;
   display: block;
   float: left;
+
 }
 
-#logout{
+#logout {
   float: right;
   padding: 10px 50px;
   color: white;
@@ -59,17 +63,18 @@ nav li a{
   cursor: pointer;
 }
 
-nav li a:hover, .menu-logout:hover{
+nav li a:hover,
+.menu-logout:hover {
   background-color: #824787;
- /*  border-bottom: 5px solid #824787; */
+  /*  border-bottom: 5px solid #824787; */
 }
 
-.content{
+.content {
   width: 100%;
   display: flex;
 }
 
-.left{
+.left {
   width: 25%;
   /* background-color: aquamarine; */
   display: inline-block;
@@ -77,14 +82,14 @@ nav li a:hover, .menu-logout:hover{
   border-radius: 5px;
 }
 
-.center{
+.center {
   width: 50%;
- /*  background-color: brown; */
+  /*  background-color: brown; */
   display: inline-block;
   border-radius: 5px;
 }
 
-.advertising{
+.advertising {
   display: inline-block;
   border-radius: 5px;
   background-color: #DCDCDC;
@@ -93,17 +98,19 @@ nav li a:hover, .menu-logout:hover{
   padding: 5px;
 }
 
-.menu-home, .menu-search, .menu-friend, .menu-perfil, .menu-logout{
+.menu-home,
+.menu-search,
+.menu-friend,
+.menu-perfil,
+.menu-logout {
   width: 25px;
-  
 }
 
-
-.right{
+.right {
   width: 25%;
 }
 
-.personal-information{
+.personal-information {
   background-color: #E5E3E3;
   border-radius: 5px;
   padding: 5px;
@@ -112,7 +119,7 @@ nav li a:hover, .menu-logout:hover{
   text-align: center;
 }
 
-.user-description{
+.user-description {
   width: 90%;
   height: 75px;
   background-color: #FFFFFF;
@@ -120,21 +127,22 @@ nav li a:hover, .menu-logout:hover{
   border-radius: 5px;
 }
 
-.friends-list{
+.friends-list {
   background-color: #E5E3E3;
   border-radius: 5px;
   padding: 5px;
-  width: 90%;  
+  width: 90%;
   margin: 10px;
-  height: 100px;  
+  height: 100px;
   text-align: center;
 }
 
-p{
+p {
   padding: 5px;
 }
 
-#bd, .friend-post{
+#bd,
+.friend-post {
   background-color: #E5E3E3;
   border-radius: 5px;
   width: 95%;
@@ -142,17 +150,17 @@ p{
   margin: 10px;
 }
 
-.textarea-post, .textarea-posts{
+.textarea-post,
+.textarea-posts {
   height: 65px;
   width: 80%;
   resize: none;
   border-radius: 5px;
 }
 
-
 input[value="Publicar"] {
-  width:100px;
-  height:22px;
+  width: 100px;
+  height: 22px;
   font-size: 1rem;
   color: white;
   background-color: #83BE52;
@@ -162,14 +170,14 @@ input[value="Publicar"] {
   cursor: pointer;
 }
 
-#imgLike{
-    size: 10px;
-    width: 15px;
-    text-align: center;
-    padding-top: 2px;
+#imgLike {
+  size: 10px;
+  width: 15px;
+  text-align: center;
+  padding-top: 2px;
 }
 
-.button-like{
+.button-like {
   border-radius: 7px;
   width: 55px;
   border: 1;
@@ -178,24 +186,24 @@ input[value="Publicar"] {
   background-color: white;
 }
 
-.button-like::before{
-    width: 10px;
-    height:22px;
-    right: 5px;
-    top: 7px;
-    text-align: center;
-    font-size: 5px;
+.button-like::before {
+  width: 10px;
+  height: 22px;
+  right: 5px;
+  top: 7px;
+  text-align: center;
+  font-size: 5px;
 }
 
-.login-user-face{
-  width:100px;
-  height:100px;
+.login-user-face {
+  width: 100px;
+  height: 100px;
   background-image: url("../../image/user.jpg");
   background-size: 110px;
   background-position: center;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   margin: 0px;
-  padding:0px;
+  padding: 0px;
   -moz-border-radius: 50px;
   border-radius: 50px;
   border: 0;
@@ -204,15 +212,15 @@ input[value="Publicar"] {
   outline: none;
 }
 
-.user-face{
-  width:60px;
-  height:60px;
+.user-face {
+  width: 60px;
+  height: 60px;
   background-image: url("../../image/user.jpg");
   background-size: 70px;
   background-position: center;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   margin: 0px;
-  padding:0px;
+  padding: 0px;
   -moz-border-radius: 50px;
   border-radius: 50px;
   border: 0;
@@ -222,43 +230,40 @@ input[value="Publicar"] {
 }
 
 @media only screen and (max-width: 768px) {
-  .right{
+  .right {
     display: none;
-  } 
-
-  .left{
+  }
+  .left {
     width: 35%;
   }
-
-  .center{
+  .center {
     width: 65%;
   }
 }
-@media only screen and (max-width: 360px) {
-  .left, .right{
-    display: none;
-  } 
 
-  .center{
+@media only screen and (max-width: 360px) {
+  .left,
+  .right {
+    display: none;
+  }
+  .center {
     width: 98%;
   }
- 
-  .textarea-post, .textarea-posts{
+  .textarea-post,
+  .textarea-posts {
     height: 65px;
     width: 75%;
   }
-
-  nav li a{
+  nav li a {
     background-color: #A05BA6;
     color: white;
     text-decoration: none;
     padding: 5px 15px;
     display: block;
-    float: left;    
-    }
-
-    #logout{
-      float: left;
-      padding: 10px 5px;
-    }
+    float: left;
+  }
+  #logout {
+    float: left;
+    padding: 10px 5px;
+  }
 }
